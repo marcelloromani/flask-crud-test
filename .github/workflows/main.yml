@@ -14,15 +14,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Setup Python
         uses: actions/setup-python@v2.2.1
         with:
-          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: 3.9
-          # The target architecture (x86, x64) of the Python interpreter.
+          python-version: ${{ matrix.python-version }}
           architecture: x64
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
