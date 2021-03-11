@@ -29,6 +29,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Upgrade pip
+        run: pip install --upgrade pip
